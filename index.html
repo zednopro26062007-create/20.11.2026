@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11</title>
+  <style>
+    @font-face {
+      font-family: 'MotionPicture';
+      src: url('./MotionPicture_PersonalUseOnly.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg-gradient: linear-gradient(155deg, #fffdfd 0%, #fff0f5 48%, #fce7f3 100%);
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --pink-primary: #e11d48;
+      --pink-rose: #f43f5e;
+      --pink-soft: #fbcfe8;
+      --pink-blush: #fff1f2;
+      --slate-frame: #64748b;
+      --text-dark: #3b1d2a;
+      --text-muted: #7c5263;
+      --font-script: 'MotionPicture', Georgia, serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+      --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      min-height: 100dvh;
+      background: var(--bg-gradient);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 18px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.22) 0%, transparent 70%);
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #petalsCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    /* ================= MÀN HÌNH 1: HỘP QUÀ TRẮNG HỒNG ================= */
+    .gift-stage {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 360px;
+      width: 100%;
+      padding: 24px 16px;
+      transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .gift-stage.opened {
+      opacity: 0;
+      transform: scale(0.88) translate3d(0, -24px, 0);
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .stage-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      color: var(--pink-rose);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--pink-soft);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 14px rgba(244, 63, 94, 0.08);
+    }
+
+    .script-en {
+      font-family: var(--font-script);
+      font-weight: normal;
+      font-size: 38px;
+      line-height: 1.2;
+      color: var(--pink-primary);
+      margin-bottom: 6px;
+      text-shadow: 0 2px 10px rgba(225, 29, 72, 0.12);
+    }
+
+    .stage-heading {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 21px;
+      line-height: 1.35;
+      color: var(--text-dark);
+      margin-bottom: 30px;
+    }
+
+    .gift-wrapper {
+      position: relative;
+      width: 164px;
+      height: 164px;
+      margin: 0 auto 30px;
+      cursor: pointer;
+      animation: floatGift 3s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    @keyframes floatGift {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -10px, 0); }
+    }
+
+    .gift-wrapper.opening {
+      animation: none;
+    }
+
+    .gift-lid {
+      position: absolute;
+      top: 26px;
+      left: 6px;
+      width: 152px;
+      height: 36px;
+      background: linear-gradient(135deg, #ffffff 0%, #ffe4e6 100%);
+      border: 1.5px solid #fecdd3;
+      border-radius: 10px;
+      z-index: 3;
+      box-shadow: 0 8px 18px rgba(225, 29, 72, 0.14);
+      transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+      will-change: transform, opacity;
+    }
+
+    .gift-lid::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 26px;
+      height: 100%;
+      background: linear-gradient(180deg, #fb7185, #e11d48);
+    }
+
+    .bow-left, .bow-right {
+      position: absolute;
+      top: -22px;
+      width: 34px;
+      height: 24px;
+      border: 5px solid #f43f5e;
+      border-radius: 50% 50% 0 50%;
+      background: rgba(255, 228, 230, 0.6);
+    }
+
+    .bow-left { left: 44px; transform: rotate(-18deg); }
+    .bow-right { right: 44px; border-radius: 50% 50% 50% 0; transform: rotate(18deg); }
+
+    .bow-knot {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 16px;
+      border-radius: 6px;
+      background: #e11d48;
+      z-index: 4;
+    }
+
+    .gift-box {
+      position: absolute;
+      bottom: 8px;
+      left: 14px;
+      width: 136px;
+      height: 100px;
+      background: linear-gradient(160deg, #ffffff 0%, #fff1f2 100%);
+      border: 1.5px solid #fecdd3;
+      border-radius: 0 0 14px 14px;
+      z-index: 2;
+      box-shadow: 0 18px 36px rgba(225, 29, 72, 0.16);
+      overflow: hidden;
+      transition: transform 0.5s ease 0.15s;
+    }
+
+    .gift-box::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 26px;
+      height: 100%;
+      background: linear-gradient(180deg, #f43f5e, #fb7185);
+    }
+
+    .gift-wrapper.opening .gift-lid {
+      transform: translate3d(18px, -95px, 0) rotate(22deg) scale(1.06);
+      opacity: 0;
+    }
+
+    .gift-wrapper.opening .gift-box { transform: scale(0.94); }
+
+    .open-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #f43f5e, #e11d48);
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(225, 29, 72, 0.32);
+      transition: transform 0.2s ease;
+    }
+
+    .open-cta:active { transform: scale(0.96); }
+
+    /* ================= MÀN HÌNH 2: THIỆP KHUNG HOA GLOW ================= */
+    .card {
+      position: relative;
+      z-index: 10;
+      max-width: 420px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 26px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      transform: translate3d(0, 48px, 0) scale(0.94);
+      pointer-events: none;
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.25s,
+                  transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+      will-change: transform, opacity;
+      /* Hiệu ứng viền ngoài nháy sáng trắng - hồng nhẹ */
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      animation: outerCardGlow 3.6s ease-in-out infinite;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      pointer-events: auto;
+    }
+
+    @keyframes outerCardGlow {
+      0%, 100% {
+        border-color: rgba(255, 255, 255, 0.95);
+        box-shadow:
+          0 16px 42px rgba(225, 29, 72, 0.12),
+          0 0 16px rgba(255, 255, 255, 0.95),
+          0 0 28px rgba(251, 207, 232, 0.55);
+      }
+      50% {
+        border-color: rgba(244, 114, 182, 0.65);
+        box-shadow:
+          0 20px 52px rgba(225, 29, 72, 0.22),
+          0 0 22px rgba(255, 241, 242, 0.95),
+          0 0 38px rgba(244, 63, 94, 0.36);
+      }
+    }
+
+    /* Khung viền kép bên trong giống ảnh mẫu */
+    .floral-inner-frame {
+      position: relative;
+      border-radius: 18px;
+      padding: 28px 18px 24px;
+      border: 2px solid rgba(100, 116, 139, 0.32);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 245, 247, 0.65) 100%);
+      animation: innerFrameGlow 3.6s ease-in-out infinite;
+    }
+
+    .floral-inner-frame::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 14px;
+      border: 1px solid rgba(244, 63, 94, 0.26);
+      pointer-events: none;
+    }
+
+    @keyframes innerFrameGlow {
+      0%, 100% {
+        box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.85);
+      }
+      50% {
+        box-shadow: inset 0 0 20px rgba(251, 207, 232, 0.65);
+      }
+    }
+
+    /* Các cụm hoa hồng SVG ở 4 góc + chuyển động đung đưa + glow trắng hồng */
+    .rose-corner {
+      position: absolute;
+      pointer-events: none;
+      z-index: 6;
+      will-change: transform, filter;
+    }
+
+    .rose-tr {
+      top: -22px;
+      right: -18px;
+      width: 148px;
+      height: 148px;
+      transform-origin: 75% 25%;
+      animation: swayGlowTR 4.2s ease-in-out infinite;
+    }
+
+    .rose-bl {
+      bottom: -22px;
+      left: -18px;
+      width: 148px;
+      height: 148px;
+      transform-origin: 25% 75%;
+      animation: swayGlowBL 4.6s ease-in-out infinite;
+    }
+
+    .rose-tl {
+      top: -14px;
+      left: -12px;
+      width: 78px;
+      height: 78px;
+      transform-origin: 25% 25%;
+      animation: swayGlowBL 3.8s ease-in-out infinite reverse;
+    }
+
+    .rose-br {
+      bottom: -14px;
+      right: -12px;
+      width: 78px;
+      height: 78px;
+      transform-origin: 75% 75%;
+      animation: swayGlowTR 4s ease-in-out infinite reverse;
+    }
+
+    @keyframes swayGlowTR {
+      0%, 100% {
+        transform: rotate(0deg) scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.95))
+                drop-shadow(0 3px 6px rgba(225, 29, 72, 0.14));
+      }
+      50% {
+        transform: rotate(2.6deg) scale(1.03);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 1))
+                drop-shadow(0 0 15px rgba(244, 63, 94, 0.45));
+      }
+    }
+
+    @keyframes swayGlowBL {
+      0%, 100% {
+        transform: rotate(0deg) scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.95))
+                drop-shadow(0 3px 6px rgba(225, 29, 72, 0.14));
+      }
+      50% {
+        transform: rotate(-2.6deg) scale(1.03);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 1))
+                drop-shadow(0 0 15px rgba(244, 63, 94, 0.45));
+      }
+    }
+
+    /* Nội dung bên trong khung */
+    .card-content {
+      position: relative;
+      z-index: 4;
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      color: var(--pink-primary);
+      background: rgba(255, 241, 242, 0.92);
+      border: 1px solid #fecdd3;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .card-script {
+      font-family: var(--font-script);
+      font-weight: normal;
+      font-size: 34px;
+      line-height: 1.2;
+      color: var(--pink-rose);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1.35;
+      color: var(--pink-primary);
+      margin-bottom: 6px;
+    }
+
+    .card-subtitle {
+      font-family: var(--font-serif);
+      font-size: 14.5px;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .polaroid {
+      display: none;
+      margin: 14px auto 18px;
+      padding: 9px 9px 13px;
+      background: #ffffff;
+      border: 1px solid #ffe4e6;
+      border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(59, 29, 42, 0.1);
+      transform: rotate(-1.4deg);
+      transition: transform 0.35s ease;
+    }
+
+    .polaroid:hover { transform: rotate(0deg) scale(1.01); }
+    .polaroid.active { display: block; }
+
+    .polaroid img {
+      width: 100%;
+      max-height: 230px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .polaroid-caption {
+      margin-top: 9px;
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #fbcfe8, transparent);
+      margin: 14px 0 16px;
+    }
+
+    .message {
+      font-size: 14.8px;
+      line-height: 1.76;
+      color: var(--text-dark);
+      white-space: pre-line;
+    }
+
+    .highlights {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 11px 13px;
+      border-radius: 13px;
+      background: rgba(255, 241, 242, 0.85);
+      border: 1px solid #ffe4e6;
+    }
+
+    .highlight-icon {
+      font-size: 19px;
+      flex-shrink: 0;
+    }
+
+    .highlight-text strong {
+      display: block;
+      font-size: 13.5px;
+      color: var(--pink-primary);
+      margin-bottom: 2px;
+    }
+
+    .highlight-text span {
+      font-size: 12.8px;
+      color: var(--text-muted);
+    }
+
+    .signature-wrap {
+      margin-top: 22px;
+      text-align: right;
+      padding-right: 18px;
+    }
+
+    .signature-en {
+      font-family: var(--font-script);
+      font-weight: normal;
+      font-size: 26px;
+      color: var(--pink-rose);
+      margin-bottom: 2px;
+    }
+
+    .signature {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 600;
+      font-size: 15.5px;
+      color: var(--pink-primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- KHO VECTOR HOA HỒNG & LÁ XANH XÁM (Dùng chung cho 4 góc) -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <!-- Lá xanh xám gân mảnh -->
+      <g id="slate-leaf">
+        <path d="M0,0 C8,-12 24,-12 32,0 C24,12 8,12 0,0 Z" fill="#64748b" stroke="#334155" stroke-width="1"/>
+        <path d="M2,0 L28,0 M10,0 L15,-5 M17,0 L22,5 M18,0 L23,-4" stroke="#cbd5e1" stroke-width="0.8" fill="none"/>
+      </g>
+      <!-- Bông hoa hồng nhiều lớp cánh -->
+      <g id="pink-rose">
+        <circle cx="0" cy="0" r="22" fill="#fbcfe8" stroke="#be123c" stroke-width="1"/>
+        <path d="M-18,-6 C-22,-18 -6,-24 4,-16 C16,-22 24,-8 16,4 C22,16 8,24 -4,16 C-16,22 -24,8 -18,-6 Z" fill="#fda4af" stroke="#be123c" stroke-width="0.9"/>
+        <path d="M-12,-4 C-14,-13 -3,-16 3,-11 C11,-15 16,-5 11,3 C15,11 5,16 -3,11 C-11,15 -16,5 -12,-4 Z" fill="#fb7185" stroke="#9f1239" stroke-width="0.9"/>
+        <path d="M-6,-2 C-7,-8 1,-10 5,-5 C9,-2 7,6 1,7 C-5,8 -8,3 -6,-2 Z" fill="#f43f5e" stroke="#881337" stroke-width="0.9"/>
+        <path d="M-2,-1 C-2,-4 3,-4 3,0 C3,3 -2,3 -1,0" fill="none" stroke="#ffe4e6" stroke-width="1.1" stroke-linecap="round"/>
+      </g>
+    </defs>
+  </svg>
+
+  <canvas id="petalsCanvas"></canvas>
+
+  <!-- MÀN HÌNH 1: HỘP QUÀ -->
+  <section class="gift-stage" id="giftStage">
+    <div class="stage-tag">20 • 11 • 2026</div>
+    <div class="script-en">Happy Teachers' Day</div>
+    <h2 class="stage-heading" id="stageHeading">Món quà nhỏ nhân ngày 20/11</h2>
+
+    <div class="gift-wrapper" id="giftWrapper" role="button" tabindex="0" aria-label="Mở hộp quà">
+      <div class="gift-lid">
+        <div class="bow-left"></div>
+        <div class="bow-right"></div>
+        <div class="bow-knot"></div>
+      </div>
+      <div class="gift-box"></div>
+    </div>
+
+    <button class="open-cta" id="openBtn">🎀 Chạm để mở hộp quà 🎀</button>
+  </section>
+
+  <!-- MÀN HÌNH 2: THIỆP KHUNG HOA HỒNG GLOW -->
+  <main class="card" id="card">
+    <div class="floral-inner-frame">
+      <!-- Cụm hoa chính góc Trên - Phải -->
+      <svg class="rose-corner rose-tr" viewBox="0 0 160 160">
+        <path d="M25,18 Q95,20 138,135" fill="none" stroke="#475569" stroke-width="1.8" stroke-linecap="round"/>
+        <use href="#slate-leaf" transform="translate(55,22) rotate(-32) scale(0.95)"/>
+        <use href="#slate-leaf" transform="translate(88,36) rotate(18) scale(1.05)"/>
+        <use href="#slate-leaf" transform="translate(124,78) rotate(55) scale(1)"/>
+        <use href="#slate-leaf" transform="translate(132,112) rotate(82) scale(0.9)"/>
+        <use href="#slate-leaf" transform="translate(112,56) rotate(-25) scale(0.85)"/>
+        <use href="#pink-rose" transform="translate(76,34) scale(0.72)"/>
+        <use href="#pink-rose" transform="translate(125,94) scale(0.78)"/>
+        <use href="#pink-rose" transform="translate(108,58) scale(1.12)"/>
+      </svg>
+
+      <!-- Cụm hoa chính góc Dưới - Trái -->
+      <svg class="rose-corner rose-bl" viewBox="0 0 160 160">
+        <path d="M22,25 Q25,125 135,138" fill="none" stroke="#475569" stroke-width="1.8" stroke-linecap="round"/>
+        <use href="#slate-leaf" transform="translate(24,52) rotate(-110) scale(0.95)"/>
+        <use href="#slate-leaf" transform="translate(36,92) rotate(-145) scale(1.05)"/>
+        <use href="#slate-leaf" transform="translate(76,128) rotate(155) scale(1)"/>
+        <use href="#slate-leaf" transform="translate(112,135) rotate(172) scale(0.88)"/>
+        <use href="#slate-leaf" transform="translate(58,108) rotate(125) scale(0.85)"/>
+        <use href="#pink-rose" transform="translate(34,74) scale(0.75)"/>
+        <use href="#pink-rose" transform="translate(92,126) scale(0.76)"/>
+        <use href="#pink-rose" transform="translate(54,104) scale(1.12)"/>
+      </svg>
+
+      <!-- Cụm hoa phụ góc Trên - Trái -->
+      <svg class="rose-corner rose-tl" viewBox="0 0 90 90">
+        <use href="#slate-leaf" transform="translate(38,24) rotate(-20) scale(0.75)"/>
+        <use href="#slate-leaf" transform="translate(24,42) rotate(75) scale(0.75)"/>
+        <use href="#pink-rose" transform="translate(32,32) scale(0.68)"/>
+      </svg>
+
+      <!-- Cụm hoa phụ góc Dưới - Phải -->
+      <svg class="rose-corner rose-br" viewBox="0 0 90 90">
+        <use href="#slate-leaf" transform="translate(52,66) rotate(160) scale(0.75)"/>
+        <use href="#slate-leaf" transform="translate(66,48) rotate(-105) scale(0.75)"/>
+        <use href="#pink-rose" transform="translate(58,58) scale(0.68)"/>
+      </svg>
+
+      <div class="card-content">
+        <div class="card-badge" id="badge"></div>
+        <div class="card-script">Happy Teachers' Day</div>
+        <h1 class="card-title" id="title"></h1>
+        <div class="card-subtitle" id="subtitle"></div>
+
+        <figure class="polaroid" id="polaroid">
+          <img id="photoImg" src="" alt="Kỷ niệm 20/11" />
+          <figcaption class="polaroid-caption" id="photoCaption"></figcaption>
+        </figure>
+
+        <div class="divider"></div>
+        <p class="message" id="message"></p>
+        <div class="highlights" id="highlights"></div>
+        <div class="signature-wrap">
+          <div class="signature-en">With Gratitude</div>
+          <div class="signature" id="signature"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+   const CARD_DATA = {
+      stageHeading: "Món quà nhỏ em gửi tặng Cô nhân ngày 20/11",
+      badge: "20 / 11 • TRI ÂN NGƯỜI GIỮ LỬA TRI THỨC",
+      title: "Chúc mừng Ngày Nhà giáo Việt Nam 20/11!",
+      subtitle: "Kính gửi Cô Đào Minh Thu — Cựu GVCN 12A3 - K61",
+      photo: "./a3.jpg",
+      photoCaption: "Thanh xuân rực rỡ của em dưới mái nhà A3 - THPT Đan Phượng",
+      message: `Nhân ngày Nhà giáo Việt Nam 20/11, em xin kính chúc Cô Đào Minh Thu — cũng như tất cả những người đã, đang và sẽ cống hiến trong lĩnh vực giáo dục ở quá khứ, hiện tại và tương lai — luôn dồi dào sức khỏe, bình an và giữ mãi ngọn lửa nhiệt huyết trên bục giảng.\n\nSau hơn một năm rời mái trường THPT Đan Phượng, bước vào giảng đường mới và trưởng thành hơn, nhưng những bài học cùng sự tận tâm của Cô vẫn luôn là hành trang quý giá nhất của em.`,
+      highlights: [
+        { 
+          icon: "✈️", 
+          label: "Bài học giá trị của Cô", 
+          text: "“Cùng một chai nước, đặt đúng nơi sẽ được trân trọng và phát huy hết giá trị.”" 
+        },
+        { 
+          icon: "🌸", 
+          label: "Tri ân sự nghiệp trồng người", 
+          text: "Kính chúc Cô và những người làm giáo dục luôn vững tâm, hạnh phúc trên hành trình gieo mầm tri thức" 
+        }
+      ],
+      signature: "Học trò cũ của Cô — Tuấn Khang (A3 - K61)"
+    };
+
+    document.title = CARD_DATA.title;
+    document.getElementById('stageHeading').textContent = CARD_DATA.stageHeading;
+    document.getElementById('badge').textContent = CARD_DATA.badge;
+    document.getElementById('title').textContent = CARD_DATA.title;
+    document.getElementById('subtitle').textContent = CARD_DATA.subtitle;
+    document.getElementById('message').textContent = CARD_DATA.message;
+    document.getElementById('signature').textContent = CARD_DATA.signature;
+
+    const polaroid = document.getElementById('polaroid');
+    const photoImg = document.getElementById('photoImg');
+    const photoCaption = document.getElementById('photoCaption');
+
+    if (CARD_DATA.photo && CARD_DATA.photo.trim() !== "") {
+      photoImg.src = CARD_DATA.photo;
+      photoCaption.textContent = CARD_DATA.photoCaption || "";
+      photoImg.onload = () => polaroid.classList.add('active');
+      photoImg.onerror = () => polaroid.classList.remove('active');
+    }
+
+    const highlightsEl = document.getElementById('highlights');
+    CARD_DATA.highlights.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'highlight-item';
+      div.innerHTML = `
+        <div class="highlight-icon">${item.icon}</div>
+        <div class="highlight-text">
+          <strong>${item.label}</strong>
+          <span>${item.text}</span>
+        </div>
+      `;
+      highlightsEl.appendChild(div);
+    });
+
+    let isOpened = false;
+    function triggerOpenGift() {
+      if (isOpened) return;
+      isOpened = true;
+
+      const wrapper = document.getElementById('giftWrapper');
+      const stage = document.getElementById('giftStage');
+      const card = document.getElementById('card');
+
+      wrapper.classList.add('opening');
+      burstPetals();
+
+      setTimeout(() => {
+        stage.classList.add('opened');
+        card.classList.add('visible');
+      }, 360);
+    }
+
+    document.getElementById('giftWrapper').addEventListener('click', triggerOpenGift);
+    document.getElementById('openBtn').addEventListener('click', triggerOpenGift);
+
+    const canvas = document.getElementById('petalsCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = 0, height = 0;
+
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const petalColors = ['#fb7185', '#f43f5e', '#fda4af', '#fecdd3', '#f472b6'];
+    const petals = [];
+
+    function createPetal(burst = false) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = burst ? (Math.random() * 8 + 4) : 0;
+      return {
+        x: burst ? width / 2 : Math.random() * width,
+        y: burst ? height / 2 - 20 : -20 - Math.random() * height,
+        vx: burst ? Math.cos(angle) * speed : (Math.random() - 0.5) * 0.8,
+        vy: burst ? Math.sin(angle) * speed - 4 : Math.random() * 1.1 + 0.6,
+        size: Math.random() * 6 + 5,
+        rot: Math.random() * Math.PI * 2,
+        vRot: (Math.random() - 0.5) * 0.08,
+        phase: Math.random() * Math.PI * 2,
+        color: petalColors[Math.floor(Math.random() * petalColors.length)],
+        alpha: Math.random() * 0.45 + 0.45,
+        isBurst: burst
+      };
+    }
+
+    for (let i = 0; i < 22; i++) {
+      const p = createPetal(false);
+      p.y = Math.random() * height;
+      petals.push(p);
+    }
+
+    function burstPetals() {
+      for (let i = 0; i < 55; i++) {
+        petals.push(createPetal(true));
+      }
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = petals.length - 1; i >= 0; i--) {
+        const p = petals[i];
+        p.phase += 0.04;
+        p.rot += p.vRot;
+
+        if (p.isBurst) {
+          p.vx *= 0.95;
+          p.vy = p.vy * 0.95 + 0.14;
+          p.alpha -= 0.005;
+          if (p.alpha <= 0.02) {
+            petals.splice(i, 1);
+            continue;
+          }
+        } else {
+          p.x += p.vx + Math.sin(p.phase) * 0.45;
+          p.y += p.vy;
+          if (p.y > height + 20) {
+            p.y = -20;
+            p.x = Math.random() * width;
+          }
+        }
+
+        p.x += p.isBurst ? p.vx : 0;
+        p.y += p.isBurst ? p.vy : 0;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.scale(1, Math.cos(p.phase) * 0.5 + 0.6);
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.fillStyle = p.color;
+
+        ctx.beginPath();
+        ctx.moveTo(0, -p.size);
+        ctx.bezierCurveTo(p.size, -p.size, p.size, p.size, 0, p.size);
+        ctx.bezierCurveTo(-p.size, p.size, -p.size, -p.size, 0, -p.size);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      requestAnimationFrame(render);
+    }
+    render();
+  </script>
+</body>
+</html>
